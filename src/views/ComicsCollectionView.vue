@@ -7,10 +7,20 @@
     </nav>
 
   </header>
+  <main><Comic/></main>
 </template>
 
 <script>
+import Comic from '../components/Comic.vue'
+
 export default {
+    data(){
+
+    },
+
+    components:{
+      Comic
+    }
 
 }
 </script>
@@ -20,6 +30,7 @@ export default {
         display:flex;
         justify-content:space-around
     }
+    
 
 
 </style>

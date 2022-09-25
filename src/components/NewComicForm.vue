@@ -1,5 +1,7 @@
 <script>
 
+  /** 
+
   document.querySelector("#comicCoverFileSelection").addEventListener( "change", function () {
 
     const reader = new FileReader();
@@ -22,7 +24,8 @@
   }
   });
   */
-      
+  
+  
     
       
     export default {
@@ -31,17 +34,19 @@
       data(){
         return{
           coverImg: '',
+          name:'',
           chapterNumber:'',
           chapterName:'',
           genre:'',
           authors:'',
           editorial:'',
           img:'',
+          
         
         }
       }
   
-
+      
     
     }
     
@@ -57,6 +62,9 @@
 
   <label>Chapter Number: </label>
   <input type="number" required v-model="chapterNumber">
+
+  <label>Comic Name: </label>
+  <input type="text" required v-model="name">
 
   <label>Chapter Name: </label>
   <input type="text" required v-model="chapterName">
