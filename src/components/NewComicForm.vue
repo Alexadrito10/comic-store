@@ -1,32 +1,6 @@
 <script>
-
-  /** 
-
-  document.querySelector("#comicCoverFileSelection").addEventListener( "change", function () {
-
-    const reader = new FileReader();
-
-    //reader.addEventListener("load", () =>{
-    // localStorage.setItem("recent-cover",reader.result);
-    //});
-
-    reader.readAsDataURL(this.files[0]);
-
-
-  });
-
-  /** 
-  document.addEventListener("DOMContentLoaded", () =>{
-  const recentCoverDataUrl = localStorage.getItem("recent-cover");
-
-  if(recentCoverDataUrl){
-  document.querySelector("#coverPreview").setAttribute("src",recentCoverDataUrl);
-  }
-  });
-  */
-  
-  
-    
+import { useComicsStore } from "../stores/comics";
+import { mapStores } from "pinia";
       
     export default {
     
@@ -44,7 +18,31 @@
           
         
         }
-      }
+      },
+      methods: {
+        createNewComic() {
+            const newComic = {
+                coverImg:this.coverImg,
+                name:this.name,
+                chapterNumber:this.chapterNumber,
+                chapterName:this.chapterName,
+                genre: this.genre,
+                authors: this.authors,
+                editorial: this.editorial,
+            };
+
+            this.useComicsStore.newComic(newComic);
+            this.coverImg="";
+            this.name="";
+            this.chapterNumber="";
+            this.chapterName="";
+            this.genre="";
+            this.authors="";
+            this.editorial="";
+
+        }
+     }
+     
   
       
     
@@ -61,16 +59,16 @@
   <img id = "coverPreview" src ="" alt="Preview">
 
   <label>Chapter Number: </label>
-  <input type="number" required v-model="chapterNumber">
+  <input type="number" required v-model="chapterNumber" id="newChNum">
 
   <label>Comic Name: </label>
-  <input type="text" required v-model="name">
+  <input type="text" required v-model="name" id="newComName">
 
   <label>Chapter Name: </label>
-  <input type="text" required v-model="chapterName">
+  <input type="text" required v-model="chapterName" id="newChapName">
 
   <label>Genre:</label>
-  <select required v-model = "genre">
+  <select required v-model = "genre" id="newGenre">
     <option value="superhero">Superhero</option>
     <option value="manga">Manga</option>
     <option value="sci-fi">Science Fiction</option>
@@ -80,13 +78,14 @@
   </select>
 
   <label>Authors:</label>
-  <input type="text" required v-model="authors">
+  <input type="text" required v-model="authors" id="newAuthor">
 
   <label>Editorial name:</label>
-  <input type="text" required v-model="editorial">
+  <input type="text" required v-model="editorial" id="newEditorial">
 
-  <button class = "newComicBtn">Add new comic</button>
-
+  <router-link to="/FerLexComicCollection" class-active="">
+    <button class = "newComicBtn" @click="(e) => createNewComic()">Add new comic</button>
+  </router-link>
 
   
 

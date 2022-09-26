@@ -4,7 +4,7 @@
             <li v-for="comic in allComics" :key="comic.chapterName">
                 <div class="comic">
                     <div class="comic-image">
-                        <router-link to="/book">
+                        <router-link to="/comic/${comic.chapterName}">
                             <img :src="comic.coverImg" :alt="comic.name">
                         </router-link>
                     </div>
@@ -48,29 +48,7 @@ export default {
         allComics() {
             return this.comicsStore.getComics;
         },
-    }, methods: {
-        createNewComic() {
-            const newComic = {
-                coverImg:this.coverImg,
-                name:this.name,
-                chapterNumber:this.chapterNumber,
-                chapterName:this.chapterName,
-                genre: this.genre,
-                authors: this.authors,
-                editorial: this.editorial,
-            };
-
-            this.comicsStore.newComic(newComic);
-            this.coverImg="";
-            this.name="";
-            this.chapterNumber="";
-            this.chapterName="";
-            this.genre="";
-            this.authors="";
-            this.editorial="";
-
-        }
-    },
+    }, 
      mounted() {
         this.comicsStore.loadComics();
     }
