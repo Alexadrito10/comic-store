@@ -1,10 +1,10 @@
 <template>
     <div class="container">
         <ul>
-            <li v-for="comic in allComics" :key="comic.chapterName">
+            <li v-for="comic in allComics" :key="comic.id" :to="`/comic/${comic.chapterName}`">
                 <div class="comic">
                     <div class="comic-image">
-                        <router-link to="/comic/${comic.chapterName}">
+                        <router-link :to="`/comic/${comic.chapterName}`">
                             <img :src="comic.coverImg" :alt="comic.name">
                         </router-link>
                     </div>

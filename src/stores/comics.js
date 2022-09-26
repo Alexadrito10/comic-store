@@ -4,7 +4,8 @@ export const useComicsStore = defineStore("comics", {
     state: () => ({
         comics: [
             
-            { 
+            {
+            id: 1,
             coverImg:"../src/assets/comic-cover/Invaders.jpg",
             name:"Invaders",
             chapterNumber:20,
@@ -12,7 +13,8 @@ export const useComicsStore = defineStore("comics", {
             genre:"Horror",
             authors:"Marvel Comics Group",
             editorial:"Marvel", },
-            { 
+            {
+            id: 2,
             coverImg:"../src/assets/comic-cover/BlackPanther.jpg",
             name:"Black Panther",
             chapterNumber:23,
@@ -20,7 +22,8 @@ export const useComicsStore = defineStore("comics", {
             genre:"Hero",
             authors:"Marvel Comics Group",
             editorial:"Marvel", },
-            { 
+            {
+            id: 3,
             coverImg:"../src/assets/comic-cover/Superman36.jpg",
             name:"Superman",
             chapterNumber:36,
@@ -36,15 +39,13 @@ export const useComicsStore = defineStore("comics", {
     },
     actions: {
         newComic(comic) {
-            this.localStorageComics.push(comic)
-            this.comics.push(comic);
+            //this.localStorageComics.push(comic)
+            //this.comics.push(comic);
             localStorage.setItem('comics', JSON.stringify(this.localStorageComics))
         },
         loadComics() {
             this.localStorageComics = JSON.parse(localStorage.getItem('comics'))
-            if(localStorageComics){
-            this.comics = this.comics.concat([...this.localStorageComics])
-            }
+            //this.comics = this.comics.concat([...this.localStorageComics])
         },
         getComicById(id) {
             const filteredComics = this.comics.filter((comics) => id.toLowerCase() === comics.chapterName.toLowerCase());
