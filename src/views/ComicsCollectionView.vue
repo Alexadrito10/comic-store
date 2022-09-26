@@ -14,10 +14,6 @@
 import Comic from '../components/Comic.vue'
 
 export default {
-    data(){
-
-    },
-
     components:{
       Comic
     }

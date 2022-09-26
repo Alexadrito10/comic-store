@@ -26,30 +26,23 @@ import { useComicsStore } from "../stores/comics";
 export default {
     components: {
     },
-    data(){
-        return{
-            comic:[
-                {
-                    coverImg:"",
-                    name:"",
-                    chapterNumber:"",
-                    chapterName:"",
-                    genre:"",
-                    authors:"",
-                    editorial:"",
-
-
-
-                }
-            ]
+    data() {
+        return {
+            coverImg: "",
+            name: "",
+            chapterNumber: "",
+            chapterName: "",
+            genre: "",
+            authors: "",
+            editorial: "",
         }
-    },computed: {
+    }, computed: {
         ...mapStores(useComicsStore),
         allComics() {
             return this.comicsStore.getComics;
         },
-    }, 
-     mounted() {
+    },
+    mounted() {
         this.comicsStore.loadComics();
     }
 
@@ -57,15 +50,13 @@ export default {
 </script>
 
 <style>
-    .container {
+.container {
     padding: 50px 0px 0px 14px;
     display: flex;
-    }
+}
 
-    ul>li {
-        display: inline-block;
-        margin: 16px 8px;
-    }
-
-
+ul>li {
+    display: inline-block;
+    margin: 16px 8px;
+}
 </style>
