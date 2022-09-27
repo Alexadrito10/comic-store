@@ -23,42 +23,72 @@ export default {
 </script>
   
 <template>
-      <div class="container">
-                <div class="comic">
-                    <div class="comic-image">
-                            <img :src="currentComic.coverImg" :alt="currentComic.name">
-                    </div>
-                    <div class="comic-content">
-                        <h3>{{currentComic.chapterName}}</h3>
-                        <p>{{currentComic.authors}}</p>
-                    </div>
-                </div>
+  <div class="detail-container">
+    <div class="comic-details">
+      <div class="cover-details">
+        <img :src="currentComic.coverImg" :alt="currentComic.name">
+      </div>
+      <div class="content-description">
+        <h3>{{currentComic.chapterName}}</h3>
+        <p> {{currentComic.chapterNumber}}</p>
+        <p>{{currentComic.name}}</p>
+        <p>{{currentComic.authors}}</p>
+        <p>{{currentComic.genre}}</p>
+        <p>{{currentComic.editorial}}</p>
+      </div>
+      <div class="button">
+        <router-link to="/FerLexComicCollection" class-active="">
+        <button class="newComicBtn"> Continue </button>
+      </router-link>
+      </div>
+      
     </div>
+  </div>
 </template>
   
   
   
 <style scoped lang = "scss">
-form {
-  padding: 40px;
-  margin: 30px auto;
-  text-align: left;
-  max-width: 500px;
+body {
+  width: max-content;
+  height: max-content;
+  background: grey;
 }
 
-label {
-  display: inline-block;
-  margin: 25px 0 15px;
+.detail-container {
+  padding-top: 20px;
+  display: flex;
+  justify-content: center;
 }
 
-input {
-  display: block;
+.comic-details {
+  width: 300px;
+  height: 300px;
 }
 
-select {
-  display: block;
+.cover-details {
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 300px;
 }
 
+.comic-details .cover-details img {
+  width: 100%;
+  border-radius: 40px 5px 40px 5px;
+}
+
+.content-description {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+  margin-top: 160px;
+}
+
+.button{
+  display: flex;
+  justify-content: center;
+}
 .newComicBtn {
   background-color: violet;
   border: 0;
@@ -66,7 +96,6 @@ select {
   margin-top: 15px;
   color: White;
   border-radius: 20px;
-
-
+  cursor: pointer;
 }
 </style>

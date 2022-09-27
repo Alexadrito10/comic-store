@@ -59,4 +59,31 @@ ul>li {
     display: inline-block;
     margin: 16px 8px;
 }
+
+.comic{
+    width: 200px;
+    height: 200px;
+}
+
+.comic .comic-image img{
+    width: 100%;
+    border-radius: 40px 5px 40px 5px;
+}
+
+.comic-content{
+    display: inline block;
+    width: max-content;
+    background-color:rgba(255,255,255,0.15);
+    border-radius: 0px 16px 0px 16px;
+    color: white;
+}
+
+.comic-content h3{
+    font-size: 22px;
+}
+
+.comic-content p{
+    font-size: 16px;
+}
+
 </style>

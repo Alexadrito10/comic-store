@@ -84,8 +84,14 @@ export default {
   }
 
   .continue-btn{
-    border: none;
+    background-color: violet;
+    border-radius: 20px;
+    color: white;
+    border: 0;
+    padding: 10px 20px;
+    margin-top: 15px;
     display: block;
+    cursor: pointer;
     margin: 0 auto;
     font-size: 32px;
   }

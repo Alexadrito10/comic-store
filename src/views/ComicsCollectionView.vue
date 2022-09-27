@@ -23,10 +23,16 @@ export default {
 
 <style>
     nav{
+        background-color: white;
         display:flex;
         justify-content:space-around
     }
     
-
+    main{
+      background-image: linear-gradient(rgba(153, 123, 123, 0.5), rgba(136, 41, 41, 0.5)), url('../assets/HorizonteCalm.jpg');
+      background-size: cover;
+      background-position: bottom;
+      transition : 0.4s;
+    }
 
 </style>

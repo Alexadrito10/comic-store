@@ -101,7 +101,7 @@ export default {
 
     <label>Editorial name:</label>
     <input type="text" v-model="editorial" id="newEditorial">
-    <button @click.prevent="(e) => createNewComic()">Add new comic</button>
+    <button class="newComicBtn" @click.prevent="(e) => createNewComic()">Add new comic</button>
   </form>
 </template>
 
@@ -117,6 +117,7 @@ form {
 
 label {
   display: inline-block;
+  color: #A0CFD3;
   margin: 25px 0 15px;
 }
 
