@@ -29,12 +29,12 @@ export default {
         <img :src="currentComic.coverImg" :alt="currentComic.name">
       </div>
       <div class="content-description">
-        <h3>{{currentComic.chapterName}}</h3>
-        <p> {{currentComic.chapterNumber}}</p>
-        <p>{{currentComic.name}}</p>
-        <p>{{currentComic.authors}}</p>
-        <p>{{currentComic.genre}}</p>
-        <p>{{currentComic.editorial}}</p>
+        <h1>Chapter name: {{currentComic.chapterName}}</h1>
+        <p>Chapter Number: {{currentComic.chapterNumber}}</p>
+        <p>Comic Name: {{currentComic.name}}</p>
+        <p>Authors: {{currentComic.authors}}</p>
+        <p>Genre: {{currentComic.genre}}</p>
+        <p>Editorial: {{currentComic.editorial}}</p>
       </div>
       <div class="button">
         <router-link to="/FerLexComicCollection" class-active="">
