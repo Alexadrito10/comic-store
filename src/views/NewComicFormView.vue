@@ -68,7 +68,7 @@ export default {
 </script>
 
 <template>
-  <form @submit.prevent="createNewComic">
+  <form @submit="createNewComic">
     <label>Cover Image:</label>
 
     <div>
@@ -101,7 +101,10 @@ export default {
 
     <label>Editorial name:</label>
     <input type="text" v-model="editorial" id="newEditorial">
-    <button class="newComicBtn" @click.prevent="(e) => createNewComic()">Add new comic</button>
+
+    <router-link to="/FerLexComicCollection" class-active="">
+    <button class="newComicBtn" @click="(e) => createNewComic()">Add new comic</button>
+    </router-link>
   </form>
 </template>
 

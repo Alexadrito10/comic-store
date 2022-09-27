@@ -26,21 +26,11 @@ export default {
 </script>
 
 <style scoped lang ="scss">
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-
-
-  }
   body{
     font-family:monserrat,sans-serif;
     
   }
-
-
-
-
+  
   #app{
     background-image: url('../assets/HorizonteCalm.jpg');
     background-size: cover;

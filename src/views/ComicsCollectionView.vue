@@ -7,6 +7,11 @@
     </nav>
 
   </header>
+  <input
+            class="input filter"
+            @change="filter"
+            v-model="filterContain"
+          />
   <main><Comic/></main>
 </template>
 
@@ -22,6 +27,15 @@ export default {
 </script>
 
 <style>
+  body{
+    width: 100%;
+  height: 100vh; /* 100% of the viewport height */
+  margin: 0;
+  }
+    main{
+    margin: 0;
+    padding: 0;
+  }
     nav{
         background-color: white;
         display:flex;
