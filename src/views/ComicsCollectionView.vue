@@ -37,7 +37,7 @@ export default {
     padding: 0;
   }
     nav{
-        background-color: white;
+        background-color: #D9F0FF;
         display:flex;
         justify-content:space-around
     }

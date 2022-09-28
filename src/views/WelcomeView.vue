@@ -30,7 +30,7 @@ export default {
     font-family:monserrat,sans-serif;
     
   }
-  
+
   #app{
     background-image: url('../assets/HorizonteCalm.jpg');
     background-size: cover;
@@ -47,7 +47,7 @@ export default {
   } 
   .welcome-wrap{
     display: inline block;
-    top: 500px;
+    bottom: 50px;
     widows: 100%;
     margin-bottom:30px;
 

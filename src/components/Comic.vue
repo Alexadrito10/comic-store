@@ -61,12 +61,17 @@ ul>li {
 }
 
 .comic{
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 250px;
+}
+
+.comic-image{
+    height: 100%;
 }
 
 .comic .comic-image img{
     width: 100%;
+    HEIGHT: 100%;
     border-radius: 40px 5px 40px 5px;
 }
 
