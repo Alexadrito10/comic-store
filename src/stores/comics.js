@@ -78,6 +78,12 @@ export const useComicsStore = defineStore("comics", {
     }),
     getters: {
         getComics: (state) => [...state.comics],
+        getFilteredComics: (state) =>{
+            const filteredComics = state.comics.filter(comic,()=>{
+                return state.selectedFilters.keyword? comic.description.includes(state.selectedFilters.keyword):true
+            })
+            return filteredComics
+        }
     },
     actions: {
         newComic(comic) {
@@ -93,5 +99,8 @@ export const useComicsStore = defineStore("comics", {
             const filteredComics = this.comics.filter((comics) => id.toLowerCase() === comics.chapterName.toLowerCase());
             return filteredComics ? {...filteredComics[0] } : null
         },
+        applyfilter(key,value){
+            this.selectedFilters[key] = value;
+        }
     },
 });

@@ -17,10 +17,15 @@
 
 <script>
 import Comic from '../components/Comic.vue'
+import { useComicsStore } from "../stores/comics";
+import { mapStores } from "pinia";
 
 export default {
     components:{
       Comic
+    },
+    computed:{
+      ... mapStores(useComicStore)
     }
 
 }
