@@ -11,7 +11,10 @@
       <div class="intro">Press the button when you feel ready 👌 </div>
       <router-link to="/FerLexComicCollection" class-active="">
             <button class="continue-btn"> Continue </button>
-        </router-link>
+      </router-link>
+      <router-link to="/SignIn" class-active="">
+            <button class="continue-btn"> SignIn </button>
+      </router-link>
     </div>
   </main>
 </div>
@@ -40,21 +43,15 @@ export default {
   }
   main{
     min-height:100vh;
-    padding: 25px;
-
     background-image: linear-gradient(to bottom,rgba(0,0,0,0.25),rgba(0,0,0,0.75));
 
   } 
   .welcome-wrap{
     display: inline block;
-    bottom: 50px;
-    widows: 100%;
-    margin-bottom:30px;
-
+    top: 250px;
     background-color:rgba(255,255,255,0.15);
     border-radius: 0px 16px 0px 16px;
     font-size: 32px;
-
   }
   .comic-welcome .intro{
     display: block;

@@ -4,6 +4,7 @@ import WelcomeView from '../views/WelcomeView.vue';
 import ComicsCollectionView from '../views/ComicsCollectionView.vue';
 import NewComicFormView from '../views/NewComicFormView.vue';
 import ComicDetail from '../components/ComicDetail.vue';
+import SignInView from "../views/SignInView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -36,6 +37,14 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component:  ComicDetail,
+    },
+    {
+      path: '/SignIn',
+      name: 'signInView',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component:  SignInView,
     }
   ]
 })
