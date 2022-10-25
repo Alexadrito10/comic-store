@@ -25,7 +25,7 @@ export default {
       Comic
     },
     computed:{
-      ... mapStores(useComicStore)
+      ... mapStores(useComicsStore)
     }
 
 }

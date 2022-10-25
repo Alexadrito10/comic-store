@@ -82,4 +82,8 @@ export default {
     margin: 0 auto;
     font-size: 32px;
   }
+
+  a{
+    text-decoration: none;
+  }
 </style>
