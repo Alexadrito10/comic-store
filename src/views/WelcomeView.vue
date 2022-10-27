@@ -9,11 +9,14 @@
       <div class="comic-welcome">Welcome to FerLex M&C, space where u can enjoy as much as your imagination want.</div>
       
       <div class="intro">Press the button when you feel ready 👌 </div>
-      <router-link to="/FerLexComicCollection" class-active="">
+      <!-- <router-link to="/FerLexComicCollection" class-active="">
             <button class="continue-btn"> Continue </button>
-      </router-link>
+      </router-link> -->
       <router-link to="/SignIn" class-active="">
             <button class="continue-btn"> SignIn </button>
+      </router-link>
+      <router-link to="/SignUp" class-active="">
+            <button class="continue-btn"> SignUp </button>
       </router-link>
     </div>
   </main>

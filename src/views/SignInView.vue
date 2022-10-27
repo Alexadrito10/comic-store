@@ -45,6 +45,9 @@ import {auth} from "../firebase/config"
    <section v-else>
     <h1>El usuario ya esta loggeado</h1>
     <button @click="logOut">cerrar sesion</button>
+    <router-link to="/FerLexComicCollection" class-active="">
+            <button class="continue-btn"> Continue </button>
+    </router-link>
    </section>
 </template>  
 <style></style>

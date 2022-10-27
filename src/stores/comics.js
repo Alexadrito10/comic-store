@@ -1,9 +1,22 @@
 import { defineStore } from "pinia";
+import { collection, getDocs } from "firebase/firestore";
+import {db} from "../firebase/config"
 ///// OPTIONS STORE
 export const useComicsStore = defineStore("comics", {
     state: () => ({
+        coverImg:"",
+        name:"",
+        chapterNumber:0,
+        chapterName:"",
+        genre:"",
+        authors:"",
+        editorial:""
+
         
-        comics: localStorage.getItem("comics") ? JSON.parse(localStorage.getItem("comics")) :[
+        //comics: localStorage.getItem("comics") ? localStorage
+        //Arreglar estoooooooooo
+        
+        /* comics: localStorage.getItem("comics") ? JSON.parse(localStorage.getItem("comics")) :[
             {
             coverImg:"../src/assets/comic-cover/Invaders.jpg",
             name:"Invaders",
@@ -74,7 +87,7 @@ export const useComicsStore = defineStore("comics", {
 
             
             
-        ], 
+        ],  */
     }),
     getters: {
         getComics: (state) => [...state.comics],
@@ -92,8 +105,31 @@ export const useComicsStore = defineStore("comics", {
             console.log("Aqui toy");
             localStorage.setItem('comics', JSON.stringify(this.comics))
         },
-        loadComics() {
-            this.localStorageComics = JSON.parse(localStorage.getItem('comics'))
+        async loadComics() {
+            
+            //this.localStorageComics = JSON.parse(localStorage.getItem('comics'))
+
+            const querySnapshot = await getDocs(collection(db, "comics"));
+            let fbComics =[]
+            querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+                console.log(doc.id, " => ", doc.data());
+                const comic = {
+                    id: doc.id,
+                    coverImg:doc.data().coverImg,
+                    name:doc.data().name,
+                    chapterNumber:doc.data().chapterNumber,
+                    chapterName:doc.data().chapterName,
+                    genre:doc.data().genre,
+                    authors:doc.data().authors,
+                    editorial:doc.data().editorial,
+                        
+                }
+                fbComics.push(comic);
+            });
+            this.localStorage = fbComics;
+            
+            
         },
         getComicById(id) {
             const filteredComics = this.comics.filter((comics) => id.toLowerCase() === comics.chapterName.toLowerCase());

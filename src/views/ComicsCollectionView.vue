@@ -16,9 +16,10 @@
 </template>
 
 <script>
-import Comic from '../components/Comic.vue'
-import { useComicsStore } from "../stores/comics";
+import Comic from '../components/Comic.vue';
+import { useComicsStore } from '../stores/comics';
 import { mapStores } from "pinia";
+//import { db } from '@/firebase';
 
 export default {
     components:{
