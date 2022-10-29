@@ -1,22 +1,75 @@
 import { defineStore } from "pinia";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, addDoc, onSnapshot } from "firebase/firestore";
 import {db} from "../firebase/config"
+import {onMounted} from 'vue'
 ///// OPTIONS STORE
+  const querySnapshot = await getDocs(collection(db, "comics"));
+  let fbComics =[]
+  querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        const comic = {
+            id: doc.id,
+            coverImg:doc.data().coverImg,
+            name:doc.data().name,
+            chapterNumber:doc.data().chapterNumber,
+            chapterName:doc.data().chapterName,
+            genre:doc.data().genre,
+            authors:doc.data().authors,
+            editorial:doc.data().editorial,
+                        
+        }
+        fbComics.push(comic);
+        //console.log(JSON.par);
+    });
+    
+/*     onMounted(() => {
+        onSnapshot(collection(db, "comics"), (querySnapshot) => {
+            const fbListeComics = [];
+            querySnapshot.forEach((doc) => {
+                const comic = {
+                    id: doc.id,
+                    coverImg:doc.data().coverImg,
+                    name:doc.data().name,
+                    chapterNumber:doc.data().chapterNumber,
+                    chapterName:doc.data().chapterName,
+                    genre:doc.data().genre,
+                    authors:doc.data().authors,
+                    editorial:doc.data().editorial,
+                                
+                }
+    
+                fbListeComics.push(comic);
+            })
+    
+            comics = fbListeComics;
+            
+          });
+        
+    })
+     */
+    
+          
+
 export const useComicsStore = defineStore("comics", {
     state: () => ({
-        coverImg:"",
+
+        comics: fbComics
+        
+        /* coverImg:"",
         name:"",
         chapterNumber:0,
         chapterName:"",
         genre:"",
         authors:"",
-        editorial:""
+        editorial:"" */
 
         
         //comics: localStorage.getItem("comics") ? localStorage
-        //Arreglar estoooooooooo
+
         
-        /* comics: localStorage.getItem("comics") ? JSON.parse(localStorage.getItem("comics")) :[
+        
+       /*  comics: localStorage.getItem("comics") ? JSON.parse(localStorage.getItem("comics")) :[
             {
             coverImg:"../src/assets/comic-cover/Invaders.jpg",
             name:"Invaders",
@@ -87,9 +140,10 @@ export const useComicsStore = defineStore("comics", {
 
             
             
-        ],  */
+        ], */ 
     }),
     getters: {
+        
         getComics: (state) => [...state.comics],
         getFilteredComics: (state) =>{
             const filteredComics = state.comics.filter(comic,()=>{
@@ -101,9 +155,12 @@ export const useComicsStore = defineStore("comics", {
     actions: {
         newComic(comic) {
             console.log("JUST HERE!!!!")
+            const docRef =  addDoc(collection(db, "comics"), comic);
             this.comics=[...this.comics, comic];
             console.log("Aqui toy");
+  
             localStorage.setItem('comics', JSON.stringify(this.comics))
+          
         },
         async loadComics() {
             
