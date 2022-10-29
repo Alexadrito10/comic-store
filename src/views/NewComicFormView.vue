@@ -14,6 +14,7 @@ export default {
       genre: '',
       authors: '',
       editorial: '',
+      rating:0,
     }
   }, computed: {
     ...mapStores(useComicsStore),
@@ -34,6 +35,7 @@ export default {
         genre: this.genre,
         authors: this.authors,
         editorial: this.editorial,
+        rating:0,
       };
 
       this.comicsStore.newComic(newComic);
@@ -44,6 +46,7 @@ export default {
       this.genre = "";
       this.authors = "";
       this.editorial = "";
+      this.rating = 0;
     }
     //image upload and preview methods
     , selectImage() {

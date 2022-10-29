@@ -41,6 +41,9 @@ export default {
             <label for="cpassword">Confirm Password:</label>
             <input type="password" name="cpassword" id="cpassword" v-model="confirmPassword">
             <button @click="newUser">Crear cuenta</button>
+            <router-link to="/SignIn" class-active="">
+            <button class="continue-btn"> Let's go to SignIn </button>
+    </router-link>
         </form>
     </section>
 </template>  

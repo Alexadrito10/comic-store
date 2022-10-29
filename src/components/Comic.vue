@@ -39,7 +39,10 @@ export default {
     }, computed: {
         ...mapStores(useComicsStore),
         allComics() {
+            console.log("aqui imprimimos")
+            console.log(this.comicsStore.getComics);
             return this.comicsStore.getComics;
+            
         },
     },
     mounted() {

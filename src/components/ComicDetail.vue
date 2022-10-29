@@ -2,8 +2,12 @@
 import Comic from '../components/Comic.vue'
 import { useComicsStore } from "../stores/comics";
 import { mapStores } from "pinia";
+import StarRating from 'vue-star-rating';
 
 export default {
+  components: {
+        StarRating,
+    },
   data() {
     return {
       currentComic: {
@@ -16,7 +20,37 @@ export default {
   },
 
   mounted() {
+    console.log("Esto es lo que llega")
+    console.log(this.comicsStore.getComicById(this.$route.params.comicName))
     this.currentComic = this.comicsStore.getComicById(this.$route.params.comicName);
+  },
+  methods: {
+    createNewComic() {
+      const newComic = {
+        coverImg: this.coverImg,
+        name: this.name,
+        chapterNumber: this.chapterNumber,
+        chapterName: this.chapterName,
+        genre: this.genre,
+        authors: this.authors,
+        editorial: this.editorial,
+        rating:0,
+      };
+
+      this.comicsStore.newComic(newComic);
+      this.coverImg = "";
+      this.name = "";
+      this.chapterNumber = "";
+      this.chapterName = "";
+      this.genre = "";
+      this.authors = "";
+      this.editorial = "";
+      this.rating = 0;
+    }
+
+
+
+
   },
 
 }
@@ -35,6 +69,10 @@ export default {
         <p>Authors: {{currentComic.authors}}</p>
         <p>Genre: {{currentComic.genre}}</p>
         <p>Editorial: {{currentComic.editorial}}</p>
+        <star-rating :rating= "currentComic.rating" :increment="0.5" :star-size="30"
+                 :read-only="reviewSubmitted" active-color="#9c0000"
+                @rating-selected="(e) => this.comicsStore.updateRatingComic(currentComic.id,e)"
+                 ></star-rating>
       </div>
       <div class="button">
         <router-link to="/FerLexComicCollection" class-active="">

@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { collection, getDocs, addDoc, onSnapshot } from "firebase/firestore";
+import { collection, getDocs, addDoc, onSnapshot,doc, updateDoc,setDoc,getDoc  } from "firebase/firestore";
 import {db} from "../firebase/config"
 import {onMounted} from 'vue'
 ///// OPTIONS STORE
@@ -162,6 +162,18 @@ export const useComicsStore = defineStore("comics", {
             localStorage.setItem('comics', JSON.stringify(this.comics))
           
         },
+        updateRatingComic(id, newvalue){
+
+            const comicSelectedRef = doc(db, "comics",id);
+            
+            // Set the "capital" field of the city 'DC'
+            updateDoc(comicSelectedRef, {
+             rating : (rating + newvalue)/2
+            });
+
+
+
+        },
         async loadComics() {
             
             //this.localStorageComics = JSON.parse(localStorage.getItem('comics'))
@@ -190,7 +202,13 @@ export const useComicsStore = defineStore("comics", {
         },
         getComicById(id) {
             const filteredComics = this.comics.filter((comics) => id.toLowerCase() === comics.chapterName.toLowerCase());
-            return filteredComics ? {...filteredComics[0] } : null
+            return filteredComics ? {...filteredComics[0] } : null 
+           /*  console.log(id);
+            const docRef = doc(db, "comics", id);
+            
+            const docSnap = getDoc(docRef);
+      
+            return docSnap; */
         },
         applyfilter(key,value){
             this.selectedFilters[key] = value;
