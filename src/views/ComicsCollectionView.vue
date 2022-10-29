@@ -1,10 +1,13 @@
 <template>
   <header>
-    <nav>
-        <router-link :to="{name:'newComic'}">Add new comic</router-link>
+    <nav v-if="!authenticationStore.loadingSession">
+        <router-link :to="{name:'newComic'}" v-if="authenticationStore.userData">Add new comic</router-link>
         <router-link :to="{name:'comic-collection'}">Comic collection</router-link>
 
     </nav>
+    <div v-else>
+      Loading...
+    </div>
 
   </header>
   <input
@@ -19,6 +22,7 @@
 import Comic from '../components/Comic.vue';
 import { useComicsStore } from '../stores/comics';
 import { mapStores } from "pinia";
+import {useAuthenticationStore} from '../stores/authentication';
 //import { db } from '@/firebase';
 
 export default {
@@ -26,6 +30,7 @@ export default {
       Comic
     },
     computed:{
+      ...mapStores(useAuthenticationStore),
       ... mapStores(useComicsStore)
     }
 
